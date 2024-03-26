@@ -45,13 +45,19 @@ class ContactController extends GetxController {
     try {
       isLoading(true);
       final result = await httpService.request(
-          url: ApiEndPoints.contact, method: Method.POST, params: dataMap);
+          url: ApiEndPoints.mailUs, method: Method.POST, params: dataMap);
       if (result != null) {
         if (result is Response) {
           var data = result.data;
           logger.d(data);
           if (result.statusCode == 200) {
+
             isLoading(false);
+            Get.snackbar('Success', 'Your mail has been sent',);
+            emailController.clear();
+            messageController.clear();
+            subjectController.clear();
+            nameController.clear();
           }
         } else {
           isLoading(false);

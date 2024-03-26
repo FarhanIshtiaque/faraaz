@@ -35,9 +35,23 @@ class Validator {
     return null;
   }
 
-  static String? validateTrip(String value) {
+  static String? validateName(String value) {
     if (value.length < 3) {
-      return "Trip name can\'t be null or at least 4 character";
+      return "Please enter a valid name";
+    } else {
+      return null;
+    }
+  }
+  static String? validateSubject(String value) {
+    if (value.length < 4) {
+      return "Please enter a valid subject";
+    } else {
+      return null;
+    }
+  }
+  static String? validateMessage(String value) {
+    if (value.length < 8 ){
+      return "Please enter a valid message";
     } else {
       return null;
     }

@@ -1,12 +1,15 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:faraaz/core/constants/app_assets.dart';
 import 'package:faraaz/core/constants/app_colors.dart';
 import 'package:faraaz/core/constants/text_styles.dart';
+import 'package:faraaz/core/helper/validator.dart';
 import 'package:faraaz/core/resource/widgets/expanded_textfield.dart';
 import 'package:faraaz/core/resource/widgets/primary_button.dart';
 import 'package:faraaz/core/resource/widgets/primary_textfield.dart';
 import 'package:faraaz/feature/contact/controller/contact_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class Contact extends StatelessWidget {
   const Contact({Key? key}) : super(key: key);
@@ -32,7 +35,9 @@ class Contact extends StatelessWidget {
                 const SizedBox(
                   height: 24,
                 ),
-                const Divider(color: AppColors.natural6,),
+                const Divider(
+                  color: AppColors.natural6,
+                ),
                 const SizedBox(
                   height: 24,
                 ),
@@ -51,33 +56,36 @@ class Contact extends StatelessWidget {
                 const SizedBox(
                   height: 24,
                 ),
-                 PrimaryTextField(
+                PrimaryTextField(
                   hintText: 'Your name',
-                   controller: contactController.nameController,
-
+                  controller: contactController.nameController,
+                  validator: (v) => Validator.validateName(v!),
                 ),
                 const SizedBox(
                   height: 16,
                 ),
-                 PrimaryTextField(
+                PrimaryTextField(
                   hintText: 'Your email',
-                   controller: contactController.emailController,
+                  controller: contactController.emailController,
+                  validator: (v) => Validator.validateEmail(v!),
                 ),
                 const SizedBox(
                   height: 16,
                 ),
-                 PrimaryTextField(
+                PrimaryTextField(
                   hintText: 'Subject',
-                   controller: contactController.subjectController,
+                  controller: contactController.subjectController,
+                  validator: (v) => Validator.validateSubject(v!),
                 ),
                 const SizedBox(
                   height: 16,
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 118,
                   child: ExpandedTextField(
                     hintText: 'Your message',
                     controller: contactController.messageController,
+                    validator: (v) => Validator.validateMessage(v!),
                   ),
                 ),
                 const SizedBox(
@@ -85,14 +93,31 @@ class Contact extends StatelessWidget {
                 ),
                 PrimaryButton(
                     onPressed: () {
+                      final isValid =
+                          contactController.key.currentState!.validate();
 
-
+                      if (isValid) {
+                        contactController.sendContactMessage(
+                            email:
+                                contactController.emailController.text.trim(),
+                            name: contactController.nameController.text.trim(),
+                            message:
+                                contactController.messageController.text.trim(),
+                            subject: contactController.subjectController.text
+                                .trim());
+                      }
                     },
-                    buttonNameWidget: const Text(
-                      'Send now',
-                      style: AppTextStyle.button1,
+                    buttonNameWidget: Obx(
+                      () => contactController.isLoading.value
+                          ? Lottie.asset(AppAssets.loaderWhite)
+                          : const Text(
+                              'Send now',
+                              style: AppTextStyle.button1,
+                            ),
                     )),
-                const SizedBox(height: 40,),
+                const SizedBox(
+                  height: 40,
+                ),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.center,
                 //   children: [
