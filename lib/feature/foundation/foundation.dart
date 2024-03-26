@@ -74,7 +74,7 @@ class Foundation extends StatelessWidget {
                       foundationController.foundation[0].title.toString(),
                       style: AppTextStyle.headline4,
                     ),
-                    SizedBox(height: 16,),
+                    const SizedBox(height: 16,),
 
                     Text(foundationController.foundation[0].details,
                       style: AppTextStyle.body2.copyWith(color: AppColors.natural4),

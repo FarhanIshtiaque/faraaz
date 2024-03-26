@@ -11,11 +11,11 @@ enum Method { POST, GET, PUT, DELETE, PATCH }
 class HttpService {
   Dio? _dio;
 
-  static header() => {"Accept": "application/json"};
+  static header() => {"Content-Type": "multipart/form-data"};
 
   Future<HttpService> init() async {
     _dio = Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl, headers: header()));
-   initInterceptors();
+ //   initInterceptors();
     return this;
   }
 

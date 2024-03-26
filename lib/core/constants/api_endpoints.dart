@@ -7,4 +7,5 @@ class ApiEndPoints {
   static const String artworkList = "/artwork-list";
   static const String uploadArtwork = "/upload-artwork";
   static const String foundation = "/foundations";
+  static const String contact = "/contact";
 }
