@@ -145,7 +145,7 @@ class _LayoutState extends State<Layout> {
                 style: AppTextStyle.button2.copyWith(color: AppColors.white),
               ),
               leading: const Icon(
-                Iconsax.user,
+                Iconsax.ranking,
                 color: AppColors.white,
               ),
               //  selected: _selectedIndex == 0,
