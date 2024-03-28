@@ -139,7 +139,8 @@ class _LayoutState extends State<Layout> {
                 // Then close the drawer
                 Get.toNamed(Routes.MEET);
               },
-            ), ListTile(
+            ),
+            ListTile(
               title: Text(
                 'Foundation',
                 style: AppTextStyle.button2.copyWith(color: AppColors.white),
@@ -154,6 +155,22 @@ class _LayoutState extends State<Layout> {
                 //    _onItemTapped(0);
                 // Then close the drawer
                 Get.toNamed(Routes.FOUNDATION);
+              },
+            ),     ListTile(
+              title: Text(
+                'Volunteer',
+                style: AppTextStyle.button2.copyWith(color: AppColors.white),
+              ),
+              leading: const Icon(
+                Iconsax.profile_2user,
+                color: AppColors.white,
+              ),
+              //  selected: _selectedIndex == 0,
+              onTap: () {
+                // Update the state of the app
+                //    _onItemTapped(0);
+                // Then close the drawer
+                Get.toNamed(Routes.VOLUNTEER);
               },
             ),
             const Spacer(),
