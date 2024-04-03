@@ -63,6 +63,7 @@ dependencies:
   flutter_widget_from_html_core: ^0.14.11
   flutter_html: ^3.0.0-beta.2
   image_picker: ^1.0.7
+  flutter_stepindicator: ^0.1.7
 
 
 dev_dependencies:
